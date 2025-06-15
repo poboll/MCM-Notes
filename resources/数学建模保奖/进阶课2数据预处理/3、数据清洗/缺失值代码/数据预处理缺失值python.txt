@@ -1,0 +1,32 @@
+删除包含缺失值的样本：
+import pandas as pd
+
+def remove_missing_values(data):
+    data.dropna(inplace=True)
+    return data
+
+# 示例使用
+data = pd.DataFrame({'A': [1, 2, np.nan, 4, 5],
+                     'B': [6, np.nan, 8, np.nan, 10]})
+processed_data = remove_missing_values(data)
+print("Processed data:")
+print(processed_data)
+
+使用均值、中位数或众数填充缺失值：
+import pandas as pd
+
+def fill_missing_values(data, method='mean'):
+    if method == 'mean':
+        data.fillna(data.mean(), inplace=True)
+    elif method == 'median':
+        data.fillna(data.median(), inplace=True)
+    elif method == 'mode':
+        data.fillna(data.mode().iloc[0], inplace=True)
+    return data
+
+# 示例使用
+data = pd.DataFrame({'A': [1, 2, np.nan, 4, 5],
+                     'B': [6, np.nan, 8, np.nan, 10]})
+processed_data = fill_missing_values(data, method='mean')
+print("Processed data:")
+print(processed_data)

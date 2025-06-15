@@ -1,0 +1,22 @@
+% 假设数据存储在data向量中
+data = [10, 12, 15, 16, 20, 100, 18, 14, 13, 11];
+
+% 计算数据的均值和标准差
+data_mean = mean(data);
+data_std = std(data);
+
+% 定义一个阈值，通常选择1.96，可以根据实际情况调整
+threshold = 1.96;
+
+% 找出所有超过阈值的异常值
+outliers = data(abs(data - data_mean) > threshold * data_std);
+
+% 打印异常值
+fprintf('异常值：%s\n', mat2str(outliers));
+
+% 将异常值替换为均值（或者你也可以选择删除这些异常值）
+data(abs(data - data_mean) > threshold * data_std) = data_mean;
+
+% 处理完异常值后的数据
+disp('处理完异常值后的数据：');
+disp(data);

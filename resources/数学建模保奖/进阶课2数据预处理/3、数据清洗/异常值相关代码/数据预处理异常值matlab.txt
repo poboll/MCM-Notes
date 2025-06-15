@@ -1,0 +1,34 @@
+基于标准差的异常值处理：
+function [processed_data, outliers] = remove_outliers(data, threshold)
+    mean_val = mean(data);
+    std_val = std(data);
+    cutoff = std_val * threshold;
+    lower_bound = mean_val - cutoff;
+    upper_bound = mean_val + cutoff;
+    outliers = data(data < lower_bound | data > upper_bound);
+    processed_data = data(data >= lower_bound & data <= upper_bound);
+end
+
+% 示例使用
+data = [1, 2, 3, 10, 15, 100, 200];
+[processed_data, outliers] = remove_outliers(data, 3);
+disp('Processed data:');
+disp(processed_data);
+disp('Outliers:');
+disp(outliers);
+
+
+基于百分位数的异常值处理：
+function [processed_data, outliers] = remove_outliers(data, percentile)
+    cutoff = prctile(data, percentile);
+    outliers = data(data > cutoff);
+    processed_data = data(data <= cutoff);
+end
+
+% 示例使用
+data = [1, 2, 3, 10, 15, 100, 200];
+[processed_data, outliers] = remove_outliers(data, 99);
+disp('Processed data:');
+disp(processed_data);
+disp('Outliers:');
+disp(outliers);

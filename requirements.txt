@@ -1,0 +1,49 @@
+# 数学建模项目依赖包
+# Mathematical Modeling Project Dependencies
+
+# 数据处理和分析 / Data Processing and Analysis
+pandas>=1.3.0
+numpy>=1.21.0
+scipy>=1.7.0
+
+# 机器学习 / Machine Learning
+scikit-learn>=1.0.0
+
+# 数据可视化 / Data Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# 中文文本处理 / Chinese Text Processing
+jieba>=0.42.1
+
+# 主题模型和自然语言处理 / Topic Modeling and NLP
+gensim>=4.1.0
+
+# 优化算法 / Optimization Algorithms
+deap>=1.3.1  # 遗传算法
+networkx>=2.6  # 图论算法
+
+# 地理信息处理 / Geographic Information Processing
+geopandas>=0.10.0
+folium>=0.12.0
+
+# 数据读取 / Data Reading
+openpyxl>=3.0.0  # Excel文件读取
+xlrd>=2.0.0
+
+# 其他工具 / Other Tools
+tqdm>=4.62.0  # 进度条
+requests>=2.26.0  # HTTP请求
+beautifulsoup4>=4.10.0  # 网页解析
+
+# Jupyter相关 / Jupyter Related
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# 统计分析 / Statistical Analysis
+statsmodels>=0.13.0
+
+# 图像处理 / Image Processing
+Pillow>=8.3.0
+opencv-python>=4.5.0

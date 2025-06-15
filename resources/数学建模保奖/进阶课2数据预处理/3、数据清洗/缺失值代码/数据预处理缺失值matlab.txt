@@ -1,0 +1,33 @@
+删除包含缺失值的样本：
+function processed_data = remove_missing_values(data)
+    data(any(isnan(data), 2), :) = [];
+    processed_data = data;
+end
+
+% 示例使用
+data = [1, 2, NaN, 4, 5;
+        6, NaN, 8, NaN, 10];
+processed_data = remove_missing_values(data);
+disp('Processed data:');
+disp(processed_data);
+
+
+使用均值、中位数或众数填充缺失值：
+function processed_data = fill_missing_values(data, method)
+    if strcmp(method, 'mean')
+        data(isnan(data)) = mean(data, 'omitnan');
+    elseif strcmp(method, 'median')
+        data(isnan(data)) = median(data, 'omitnan');
+    elseif strcmp(method, 'mode')
+        mode_val = mode(data, 'omitnan');
+        data(isnan(data)) = mode_val(1);
+    end
+    processed_data = data;
+end
+
+% 示例使用
+data = [1, 2, NaN, 4, 5;
+        6, NaN, 8, NaN, 10];
+processed_data = fill_missing_values(data, 'mean');
+disp('Processed data:');
+disp(processed_data);

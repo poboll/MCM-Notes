@@ -1,0 +1,19 @@
+x = [48 51 57 57 49 86 48 53 59 50 48 47 53 56 60];   % 假设x是取自正态分布的样本
+u = mean(x,'omitnan');  % 忽略数据中的缺失值计算均值
+sigma = std(x,'omitnan');   % 计算标准差  std(x,0,'omitnan')是总体标准差
+lb = u - 3*sigma    % 区间下界，low bound的缩写
+ub = u + 3*sigma   % 区间上界，upper bound的缩写
+tmp = (x < lb) | (x > ub);
+ind = find(tmp)
+
+
+
+
+
+x = [48 51 57 57 49 86 48 53 59 50 48 47 53 56 60];   % 假设x是取自正态分布的样本
+u = mean(x,'omitnan');  % 忽略数据中的缺失值计算均值
+sigma = std(x,'omitnan');   % 计算标准差  std(x,0,'omitnan')是总体标准差
+lb = u - 3*sigma    % 区间下界，low bound的缩写
+ub = u + 3*sigma   % 区间上界，upper bound的缩写
+tmp = (x < lb) | (x > ub);
+ind = find(tmp)

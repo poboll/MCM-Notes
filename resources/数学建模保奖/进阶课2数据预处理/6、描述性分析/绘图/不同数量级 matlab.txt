@@ -1,0 +1,22 @@
+% 假设 original_data 是您的原始数据
+scaled_data = zscore(original_data);
+
+% 假设 x1, y1 和 x2, y2 是两组数据
+figure;
+yyaxis left;
+scatter(x1, y1, 'r', 'DisplayName', 'Data1');
+xlabel('X-axis');
+ylabel('Y-axis (Data1)');
+yyaxis right;
+scatter(x2, y2, 'b', 'DisplayName', 'Data2');
+ylabel('Y-axis (Data2)');
+legend('show');
+
+
+
+
+% 假设 df 包含您的数据
+% 请确保将 'variable1', 'variable2', 'variable3' 替换为您的变量名称
+figure;
+gplotmatrix(df{:, {'variable1', 'variable2', 'variable3'}}, [], df.GroupVariable, 'rbg', 'osd', [], 'on', 'hist');
+

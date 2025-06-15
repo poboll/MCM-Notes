@@ -1,0 +1,37 @@
+处理异常值和缺失值时，具体的实现代码会因数据类型、统计方法和具体需求而有所不同。以下是一些常见的方法来处理异常值和缺失值的示例代码：
+基于标准差的异常值处理：
+import numpy as np
+
+def remove_outliers(data, threshold=3):
+    mean = np.mean(data)
+    std = np.std(data)
+    cutoff = std * threshold
+    lower_bound = mean - cutoff
+    upper_bound = mean + cutoff
+    outliers = [x for x in data if x < lower_bound or x > upper_bound]
+    processed_data = [x for x in data if x >= lower_bound and x <= upper_bound]
+    return processed_data, outliers
+
+# 示例使用
+data = [1, 2, 3, 10, 15, 100, 200]
+processed_data, outliers = remove_outliers(data)
+print("Processed data:", processed_data)
+print("Outliers:", outliers)
+
+
+
+基于百分位数的异常值处理：
+import numpy as np
+
+def remove_outliers(data, percentile=99):
+    cutoff = np.percentile(data, percentile)
+    outliers = [x for x in data if x > cutoff]
+    processed_data = [x for x in data if x <= cutoff]
+    return processed_data, outliers
+
+# 示例使用
+data = [1, 2, 3, 10, 15, 100, 200]
+processed_data, outliers = remove_outliers(data)
+print("Processed data:", processed_data)
+print("Outliers:", outliers)
+

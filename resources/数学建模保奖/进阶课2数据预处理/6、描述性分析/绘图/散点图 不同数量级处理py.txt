@@ -1,0 +1,41 @@
+
+
+对数变换（Logarithmic Transformation）：
+如果数据具有较大的数量级差异，可以考虑对数据进行对数变换。对数变换有助于减小较大数值的影响，使其更接近较小数值，从而更容易在散点图中可视化。
+在Python中，可以使用numpy的log函数来执行对数变换。
+
+import numpy as np
+
+# 对数据进行对数变换
+log_transformed_data = np.log(original_data)
+
+
+标准化（Normalization）：
+标准化是将数据缩放到均值为0，标准差为1的标准正态分布。这对于消除数量级差异非常有用。
+可以使用sklearn.preprocessing中的StandardScaler来进行标准化处理
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(original_data)
+
+使用双坐标轴（Dual Axes）：
+如果数据的数量级差异非常大，无法通过简单的变换来解决，可以考虑在同一个图上使用双坐标轴，使数据在两个不同的坐标轴上显示。
+这可以通过在同一图上绘制两个散点图，分别使用不同的坐标轴进行实现。
+
+import matplotlib.pyplot as plt
+
+fig, ax1 = plt.subplots()
+
+# 绘制第一个数据集，使用左侧坐标轴
+ax1.scatter(x1, y1, color='red', label='Data1')
+ax1.set_xlabel('X-axis')
+ax1.set_ylabel('Y-axis (Data1)', color='red')
+
+# 创建第二个坐标轴，使用右侧坐标轴
+ax2 = ax1.twinx()
+ax2.scatter(x2, y2, color='blue', label='Data2')
+ax2.set_ylabel('Y-axis (Data2)', color='blue')
+
+plt.show()
+

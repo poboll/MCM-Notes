@@ -1,0 +1,20 @@
+% 假设已知的数据点的坐标和数值存储在矩阵X和向量y中
+% 待插值的新坐标为(x0,y0)
+
+% 计算半方差函数模型的参数
+% 这里使用了指数型半方差函数
+distance = pdist2(X,X); % 计算数据点之间的距离矩阵
+a = 1; % 半方差函数的尺度参数
+C = exp(-distance./a); % 计算半方差函数的值
+
+% 构造权重向量
+K = [C, ones(size(X,1),1); ones(1,size(X,1)), 0];
+w = K\[y;1];
+
+% 计算新坐标的估计值
+distance0 = pdist2(X,[x0,y0]); % 计算新坐标与已知数据点之间的距离
+C0 = exp(-distance0./a); % 计算半方差函数的值
+y0 = C0'*w(1:end-1); % 计算估计值
+
+% 输出结果
+disp(['The estimated value at (' num2str(x0) ',' num2str(y0) ') is ' num2str(y0)])
